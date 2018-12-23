@@ -1,0 +1,73 @@
+#include <iostream>
+#include <algorithm>
+#include "Sequence.h"
+
+#ifndef DNA_H
+#define DNA_H
+
+using namespace std;
+
+class RNA;
+
+enum DNA_Type{promoter, motif, tail, noncoding};
+
+class DNA : public Sequence
+{
+  	private:
+        DNA_Type    type;
+        char *      complementary_strand = nullptr;
+        int         complementary_strand_length;
+        int         startIndex;
+        int         endIndex;
+    public:
+ 	 	// constructors and destructor
+        DNA();
+        DNA(char * seq, DNA_Type atype , int sequence_length );
+        DNA(char * seq , int sequence_length );
+        DNA(DNA& rhs);
+        ~DNA();
+
+        /// setters and getters
+        DNA_Type    getType();
+        char*       getComplementary_strand();
+        int         getComplementary_strand_length();
+        int         getStartIndex();
+        int         getEndIndex();
+
+        void        setDNA_Type( DNA_Type Type );
+        void        setDNA_sequence( char* seq , int len );
+        void        setDNA_Start_index( int  );
+        void        setDNA_END_index( int  );
+
+
+ 	 	/// function printing DNA sequence information to user
+        void        Print( ostream& out = cout );
+        bool        readFromFile();
+        bool        isValid(char * temporary , int length);
+        bool        isValid_DNA_type( string type );
+        
+        /// function to convert the DNA sequence to RNA sequence
+        /// It starts by building the complementary_strand of the current
+        /// DNA sequence (starting from the startIndex to the endIndex);
+        RNA*        ConvertToRNA();
+        
+ 	 	/// function to build the second strand/pair of DNA sequence
+	    /// To build a complementary_strand (starting from the startIndex to
+        /// the endIndex), convert each A to T, each T to A, each C to G, and
+        /// each G to C. Then reverse the resulting sequence.
+        void        BuildComplementaryStrand();
+
+        /// operators overloaded
+        Sequence*       operator +  ( Sequence * object );
+        bool            operator == ( Sequence * object );
+        bool            operator != ( Sequence * object );
+
+};
+
+
+ostream& operator << ( ostream& out , Sequence * s );
+istream& operator >> ( istream& in  , Sequence * s );
+
+
+
+#endif // DNA_H

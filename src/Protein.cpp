@@ -1,0 +1,255 @@
+#include "Protein.h"
+#include "DNA.h"
+#include "RNA.h"
+#include "CodonsTable.h"
+
+using namespace std;
+
+/** Default constructor **/
+Protein::Protein()
+{
+    type = Cellular_Function ;
+}
+
+/**
+        Default constructor get Protein sequence
+        then deep copy it
+**/
+Protein :: Protein( char* p , Protein_Type atype , int sequence_length )
+: Sequence( p , sequence_length )
+{
+    this->type = atype;
+}
+
+Protein::~Protein()
+{
+    //dtor
+}
+
+/***
+        ***** Setters and getters ****
+***/
+Protein_Type Protein :: getType()
+{
+    return this->type;
+}
+
+void Protein :: setType( Protein_Type atype )
+{
+    this->type = atype;
+}
+
+
+/// function printing Protein sequence information
+void Protein::Print( ostream& out )
+{
+    system( "CLS" );
+    out << "|||||||||||||||||||||||||||||||||||||||||||" << endl;
+    out << "|||            The Protein              |||" << endl;
+    out << "|||||||||||||||||||||||||||||||||||||||||||" << endl;
+    out << '\n';
+
+    out << "Protein Strand :  ";
+    out << this->seq << endl;
+
+    out << "Protein Type   :   ";
+    switch ( this->type )
+    {
+    case 0 :
+        out << "Hormon" << endl;
+        break;
+
+    case 1:
+        out << "Enzyme" << endl;
+        break;
+
+    case 2:
+        out << "TF" << endl;
+        break;
+
+    case 3:
+        out << "Cellular_Function" << endl;
+        break;
+
+    default:
+        out << "Unknowing" << endl;
+    }
+
+    out << endl << endl;
+    system( "Pause" );
+}
+
+char* Protein :: convert_to_protein (char* rna , int len )
+    {
+        char* p = new char[ len/3 ];            /// set size of the protein sequence
+        for (int i = 0 ; i < len ; i += 3)      /// get amino acid
+        {
+            p[i] = this->codonT.getAminoAcid_char ( rna );
+        }
+        return p ;
+    }
+
+
+bool Protein :: readFromFile()
+{
+    fstream infile;
+    infile.open( this->tempFileName.c_str() , ios::in );
+
+    string typeStr = "";
+    char *temporary = new char[seq_length];
+    typeStr = deleteSpace( typeStr );
+    getline( infile , typeStr );
+
+    if ( typeStr == "Hormon"  ) this->type = Hormon;
+    else if ( typeStr == "Enzyme"     ) this->type = Enzyme;
+    else if ( typeStr == "TF"      ) this->type = TF;
+    else if ( typeStr == "Cellular_Function" ) this->type = Cellular_Function;
+    else
+    {
+        this->valid = false;
+        cout << "Invalid Type \n";
+
+        remove( this->tempFileName.c_str() );
+        return false;
+    }
+
+    for ( int i = 0; i < this->seq_length; i++ )
+    {
+        infile >> temporary[ i ];
+    }
+    temporary[seq_length] = '\0';
+
+    remove( this->tempFileName.c_str() );
+    if (isValid(temporary , seq_length))
+    {
+        this->seq = temporary;
+        this->seq[ this->seq_length ] = '\0';
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+/***********************
+        Function for valid input
+************************/
+
+bool Protein :: isValid(char * temporary , int seq_length )
+{
+    temporary = get_upper( temporary , seq_length );
+
+    for (int i=0; i < seq_length; i++)
+    {
+        if ( temporary[i] >= 'A' && temporary[i] <= 'Z' )
+        {
+            /// BJOUXZ
+            if ( temporary[i] == 'B' || temporary[i] == 'J' || temporary[i] == 'O' ||
+                 temporary[i] == 'U' || temporary[i] == 'X' || temporary[i] == 'Z' )
+            {
+                cout <<"Error : Invalid sequence!" << endl;
+                return false;
+            }
+        }
+    }
+    this->valid = true;
+    return true;
+}
+
+DNA* Protein :: GetDNAStrandsEncodingMe( DNA & bigDNA )
+{
+    DNA* sent= new DNA [bigDNA.getLength()]; ///array of DNAs to store the small DNAs
+    CodonsTable table;
+    char* please = new char[seq_length * 3]; /// puts each group of DNA sequence that can make the Protein
+    table.LoadCodonsFromFile("RNA_codon_table.txt");
+    int h = 0; /// index of bigDNA
+    int e = 0; /// number of matches found
+    int m = 0; ///length of small DNAs taken
+    while ((bigDNA.getLength() - h)>=((seq_length*3)-1)) ///while there are still untaken charachters in the bigDNA not tried
+    {
+
+        for (int i=h; i<(seq_length*3 + h); i++)
+        {
+            please[m++] = bigDNA.getSequence()[i];
+        }
+        please[m] = '\0';
+        m=0;
+        Sequence* converter = new DNA(please , bigDNA.getType() , seq_length*3);
+    /// Type casting:
+        char* strand = new char[ seq_length*3];
+        strcpy(strand , converter->getSequence()); ///copies the sequence of the strand of small DNA
+        converter = ((DNA*)converter)->ConvertToRNA(); ///converts DNA to RNA
+        converter = ((RNA*)converter)->ConvertToProtein(table); ///converts RNA to Protein
+        char * temp = converter->getSequence(); ///stores Converted Protein sequence that is converted from parts of bigDNA
+        bool checker = true ;
+        for (int i=0; i< seq_length ;i++)
+        {
+            if (seq[i] != temp[i]) ///checks if sequence of the protein doesnt equal converted sequence
+            {
+                checker = false;
+                break;
+            }
+        }
+        DNA* d = new DNA(strand , bigDNA.getType() , seq_length*3); ///creates DNA object of the original subsequence of DNA
+        if(checker)
+        {
+            sent[e++] = *(d); ///adds the DNA object to the array of DNAs and increment the index
+        }
+        h++;
+    }
+
+    if ( e == 0 )
+    {
+        cout << "NO Dna found\n";
+    }
+    system( "pause" );
+
+    DNA * nullObject = new DNA; /// null object for end the array
+    sent[ e++ ] = *nullObject;
+    return sent;
+}
+
+
+/***
+        Operators over loaded implementation
+**/
+Sequence* Protein :: operator + ( Sequence * object )
+{
+    int length = this->getLength() + object->getLength()+1;
+    char * concatination = new char [ length ];     /// set double size
+
+    for ( int i = 0; i < this->getLength(); i++ )   /// take first segment
+        concatination [ i ] = this->seq [ i ];
+
+    char * a = object->getSequence();               /// take the second segment
+    for ( int i = this->getLength(),j = 0; i < length; i++,j++ )
+        concatination[ i ] = a[ j ];
+    concatination [ length ] = '\0';
+
+    Sequence * ob = new DNA( concatination , length );
+    return ob;
+}
+
+bool Protein :: operator == ( Sequence * object )
+{
+    if ( this->type != ((Protein*)object)->getType() )
+        return false;
+
+    bool isFlag = true;
+    char * a = object->getSequence();
+    for ( int i = 0; i < this->seq_length; i++ )
+    {
+        if ( this->seq[i] != a[i] )
+            isFlag = false;
+    }
+    return isFlag;
+}
+
+bool Protein :: operator != ( Sequence * object )
+{
+    if ( *this == object )
+        return false;
+    return true;
+}
+

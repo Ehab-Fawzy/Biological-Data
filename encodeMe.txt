@@ -1,0 +1,5 @@
+promoter
+CGCCAAAGCGTCCGCCAAAGC
+
+TF
+RQS

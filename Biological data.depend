@@ -1,0 +1,263 @@
+# depslib dependency file v1.0
+1544093337 source:c:\users\ehab\desktop\biological data\src\codonstable.cpp
+	"CodonsTable.h"
+
+1544093321 c:\users\ehab\desktop\biological data\include\codonstable.h
+	<iostream>
+	<fstream>
+	<cstring>
+
+1544098893 source:c:\users\ehab\desktop\biological data\src\dna.cpp
+	"DNA.h"
+	"RNA.h"
+
+1544098444 c:\users\ehab\desktop\biological data\include\dna.h
+	<iostream>
+	<algorithm>
+	"Sequence.h"
+
+1544250079 c:\users\ehab\desktop\biological data\include\sequence.h
+	<iostream>
+	<cstring>
+	"CodonsTable.h"
+
+1544105759 source:c:\users\ehab\desktop\biological data\src\protein.cpp
+	"Protein.h"
+	"DNA.h"
+	"RNA.h"
+
+1544105396 c:\users\ehab\desktop\biological data\include\protein.h
+	<iostream>
+	"Sequence.h"
+
+1544249066 source:c:\users\ehab\desktop\biological data\src\rna.cpp
+	"RNA.h"
+	"DNA.h"
+
+1544098866 c:\users\ehab\desktop\biological data\include\rna.h
+	<iostream>
+	"Sequence.h"
+
+1544250071 source:c:\users\ehab\desktop\biological data\src\sequence.cpp
+	"Sequence.h"
+
+1543962915 source:c:\users\ehab\desktop\biological data\main.cpp
+	<iostream>
+	"Sequence.h"
+	"DNA.h"
+	"RNA.h"
+	"Protein.h"
+
+1544093337 source:d:\biological data\src\codonstable.cpp
+	"CodonsTable.h"
+
+1544093321 d:\biological data\include\codonstable.h
+	<iostream>
+	<fstream>
+	<cstring>
+
+1544368823 source:d:\biological data\src\dna.cpp
+	"DNA.h"
+	"RNA.h"
+
+1544368671 d:\biological data\include\dna.h
+	<iostream>
+	<algorithm>
+	"Sequence.h"
+
+1544367368 d:\biological data\include\sequence.h
+	<iostream>
+	<fstream>
+	<cstring>
+	<string>
+	"CodonsTable.h"
+
+1544355240 d:\biological data\include\rna.h
+	<iostream>
+	"Sequence.h"
+
+1544355246 source:d:\biological data\src\protein.cpp
+	"Protein.h"
+	"DNA.h"
+	"RNA.h"
+
+1544355240 d:\biological data\include\protein.h
+	<iostream>
+	"Sequence.h"
+
+1544355251 source:d:\biological data\src\rna.cpp
+	"RNA.h"
+	"DNA.h"
+
+1544367579 source:d:\biological data\src\sequence.cpp
+	"Sequence.h"
+
+1544369176 source:d:\biological data\main.cpp
+	<iostream>
+	"Sequence.h"
+	"DNA.h"
+	"RNA.h"
+	"Protein.h"
+
+1544700894 source:e:\biological data\main.cpp
+	<iostream>
+	"Sequence.h"
+	"DNA.h"
+	"RNA.h"
+	"Protein.h"
+	"CodonsTable.h"
+
+1544543175 e:\biological data\include\sequence.h
+	<iostream>
+	<fstream>
+	<cstring>
+	<string>
+	"CodonsTable.h"
+
+1544532993 e:\biological data\include\codonstable.h
+	<iostream>
+	<fstream>
+	<cstring>
+
+1544700023 e:\biological data\include\dna.h
+	<iostream>
+	<algorithm>
+	"Sequence.h"
+
+1544697413 e:\biological data\include\rna.h
+	<iostream>
+	"Sequence.h"
+
+1544703526 e:\biological data\include\protein.h
+	<iostream>
+	"Sequence.h"
+
+1544532993 source:e:\biological data\src\codonstable.cpp
+	"CodonsTable.h"
+
+1544700823 source:e:\biological data\src\protein.cpp
+	"Protein.h"
+	"DNA.h"
+	"RNA.h"
+	"CodonsTable.h"
+
+1544700728 source:e:\biological data\src\rna.cpp
+	"RNA.h"
+	"DNA.h"
+	"Protein.h"
+
+1544536125 source:e:\biological data\src\sequence.cpp
+	"Sequence.h"
+
+1544700023 source:e:\biological data\src\dna.cpp
+	"DNA.h"
+	"RNA.h"
+
+1544532993 source:e:\biological data2\src\codonstable.cpp
+	"CodonsTable.h"
+
+1544532993 e:\biological data2\include\codonstable.h
+	<iostream>
+	<fstream>
+	<cstring>
+
+1544821116 source:e:\biological data2\src\dna.cpp
+	"DNA.h"
+	"RNA.h"
+
+1544822188 e:\biological data2\include\dna.h
+	<iostream>
+	<algorithm>
+	"Sequence.h"
+
+1544821116 e:\biological data2\include\sequence.h
+	<iostream>
+	<fstream>
+	<cstring>
+	<string>
+	"CodonsTable.h"
+
+1544822188 e:\biological data2\include\rna.h
+	<iostream>
+	"Sequence.h"
+
+1544822188 source:e:\biological data2\src\protein.cpp
+	"Protein.h"
+	"DNA.h"
+	"RNA.h"
+	"CodonsTable.h"
+
+1544822188 e:\biological data2\include\protein.h
+	<iostream>
+	"Sequence.h"
+
+1544822183 source:e:\biological data2\src\rna.cpp
+	"RNA.h"
+	"DNA.h"
+	"Protein.h"
+
+1544821116 source:e:\biological data2\src\sequence.cpp
+	"Sequence.h"
+
+1544822244 source:e:\biological data2\main.cpp
+	<iostream>
+	"Sequence.h"
+	"DNA.h"
+	"RNA.h"
+	"Protein.h"
+	"CodonsTable.h"
+
+1544822387 source:c:\users\ehab\desktop\12-dec-18\g3_20170072_g3_20170081_g3_20170093\g3_20170072_g3_20170081_g3_20170093\biological data\main.cpp
+	<iostream>
+	"Sequence.h"
+	"DNA.h"
+	"RNA.h"
+	"Protein.h"
+	"CodonsTable.h"
+
+1544821116 c:\users\ehab\desktop\12-dec-18\g3_20170072_g3_20170081_g3_20170093\g3_20170072_g3_20170081_g3_20170093\biological data\include\sequence.h
+	<iostream>
+	<fstream>
+	<cstring>
+	<string>
+	"CodonsTable.h"
+
+1544532993 c:\users\ehab\desktop\12-dec-18\g3_20170072_g3_20170081_g3_20170093\g3_20170072_g3_20170081_g3_20170093\biological data\include\codonstable.h
+	<iostream>
+	<fstream>
+	<cstring>
+
+1544822188 c:\users\ehab\desktop\12-dec-18\g3_20170072_g3_20170081_g3_20170093\g3_20170072_g3_20170081_g3_20170093\biological data\include\dna.h
+	<iostream>
+	<algorithm>
+	"Sequence.h"
+
+1544822188 c:\users\ehab\desktop\12-dec-18\g3_20170072_g3_20170081_g3_20170093\g3_20170072_g3_20170081_g3_20170093\biological data\include\rna.h
+	<iostream>
+	"Sequence.h"
+
+1544822188 c:\users\ehab\desktop\12-dec-18\g3_20170072_g3_20170081_g3_20170093\g3_20170072_g3_20170081_g3_20170093\biological data\include\protein.h
+	<iostream>
+	"Sequence.h"
+
+1544532993 source:c:\users\ehab\desktop\12-dec-18\g3_20170072_g3_20170081_g3_20170093\g3_20170072_g3_20170081_g3_20170093\biological data\src\codonstable.cpp
+	"CodonsTable.h"
+
+1544821116 source:c:\users\ehab\desktop\12-dec-18\g3_20170072_g3_20170081_g3_20170093\g3_20170072_g3_20170081_g3_20170093\biological data\src\dna.cpp
+	"DNA.h"
+	"RNA.h"
+
+1544822188 source:c:\users\ehab\desktop\12-dec-18\g3_20170072_g3_20170081_g3_20170093\g3_20170072_g3_20170081_g3_20170093\biological data\src\protein.cpp
+	"Protein.h"
+	"DNA.h"
+	"RNA.h"
+	"CodonsTable.h"
+
+1544822183 source:c:\users\ehab\desktop\12-dec-18\g3_20170072_g3_20170081_g3_20170093\g3_20170072_g3_20170081_g3_20170093\biological data\src\rna.cpp
+	"RNA.h"
+	"DNA.h"
+	"Protein.h"
+
+1544821116 source:c:\users\ehab\desktop\12-dec-18\g3_20170072_g3_20170081_g3_20170093\g3_20170072_g3_20170081_g3_20170093\biological data\src\sequence.cpp
+	"Sequence.h"
+
